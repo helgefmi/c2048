@@ -6,7 +6,7 @@
 #include "board.h"
 #include "ai.h"
 #include "test.h"
-#include "cache.h"
+#include "precalc.h"
 
 static void fill_random_cell(board_t*);
 static int get_score(int);
@@ -89,11 +89,11 @@ void board_move(board_t *board, int move) {
         bitmap ^= (1 << i);
 
         /* did this number collide with another number? */
-        int collision_bitmap = cache_directions[i][move] & board->occupied_cells;
+        int collision_bitmap = precalc_directions[i][move] & board->occupied_cells;
 
         if (!collision_bitmap) {
             /* if not, put the number on the most distant square (if it's not there already) */
-            int last_i = cache_directions_last[i][move];
+            int last_i = precalc_directions_last[i][move];
             if (last_i >= 0) {
                 board->occupied_cells ^= (1 << i) | (1 << last_i);
                 board->cells[i] = 0;
@@ -114,8 +114,8 @@ void board_move(board_t *board, int move) {
                 bitmap &= ~(1 << other_i);
             }
             else {
-                /* not the same value as me; move to its neighbor square if I'm not there already */
-                int first_i = cache_directions_first[other_i][(move + 2) % 4];
+                /* two different numbers; move to its neighbor square if we're not there already */
+                int first_i = precalc_directions_first[other_i][(move + 2) % 4]; // `(move + 2) % 4` flips the direction.
                 if (first_i >= 0 && first_i != i) {
                     board->occupied_cells ^= (1 << i) | (1 << first_i);
                     board->cells[i] = 0;

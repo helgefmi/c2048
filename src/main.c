@@ -6,7 +6,7 @@
 #include "ai.h"
 #include "test.h"
 #include "interface.h"
-#include "cache.h"
+#include "precalc.h"
 
 int main(int argc, char **argv) {
     int seed = time(NULL);
@@ -14,7 +14,7 @@ int main(int argc, char **argv) {
     printf("Random seed: %d\n", seed);
     srand(seed);
 
-    cache_init();
+    precalc_init();
 
     if (argc == 2) {
         if (0 == strcmp(argv[1], "--human")) {
