@@ -79,7 +79,7 @@ void board_setup_bitfields(board_t *board) {
 }
 
 void board_move(board_t *board, int move) {
-    int reversed = move == 0 || move == 3;
+    int reversed = move == MOVE_UP || move == MOVE_LEFT;
 
     /* `bitmap` represents all the numbers that we haven't moved yet */
     for (int bitmap = board->occupied_cells; bitmap;) {
