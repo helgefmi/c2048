@@ -11,7 +11,7 @@ Shell arguments:
 ----------------
 
     --human  Play on the console, using hjkl to move around
-    --test   Runs the testcases and does a performance test (nodes/sec)
+    --test   Runs some testcases
     --ai     Runs infinitly many games in a row, while tracking stats (avg, max, nps, etc.)
 
 If you run it with no arguments, it will be able to talk to [4096](https://github.com/matslindh/4096), a 2048 bot interface made by Mats Lindh:
