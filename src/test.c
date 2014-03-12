@@ -22,6 +22,7 @@ void rotate_board(board_t *board) {
 }
 
 void test_run_testcases() {
+#if COLSIZE == 4
     struct {
         board_t init;
         int move;
@@ -131,4 +132,5 @@ void test_run_testcases() {
     ai_search(&board, 10, 0, &best_move);
     assert(best_move >= 0);
     assert(best_move == MOVE_RIGHT);
+#endif
 }
