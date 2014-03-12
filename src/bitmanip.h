@@ -3,11 +3,8 @@
 
 #define ClearLow(x) ((x) &= (x) - 1)
 
-/* Headers for optimized versions of LSB, MSB and PopCnt */
-#if defined(__LP64__)
-    #include "inline64.h"
-#else
-    #include "inline32.h"
-#endif
+#define PopCnt(x) (__builtin_popcount((x)) + 0)
+#define LSB(x) (__builtin_ffs((x)) - 1)
+#define MSB(x) (31 - __builtin_clz((x)))
 
 #endif

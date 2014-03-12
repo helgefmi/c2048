@@ -7,12 +7,15 @@
 #include "test.h"
 #include "interface.h"
 #include "precalc.h"
+#include "bitmanip.h"
 
 int main(int argc, char **argv) {
     int seed = time(NULL);
     //seed = 1394569404;
     //printf("Random seed: %d\n", seed);
     srand(seed);
+
+    printf("%d %d %d\n", LSB(0x11), MSB(0x11), PopCnt(0xFFFF));
 
     precalc_init();
 
