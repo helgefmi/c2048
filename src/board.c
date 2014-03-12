@@ -88,7 +88,7 @@ void board_move(board_t *board, int move) {
 
         bitmap ^= (1 << i);
 
-        /* did this number collied with another number? */
+        /* did this number collide with another number? */
         int collision_bitmap = cache_directions[i][move] & board->occupied_cells;
 
         if (!collision_bitmap) {
