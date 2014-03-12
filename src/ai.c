@@ -6,9 +6,6 @@
 #include "board.h"
 #include "util.h"
 
-#define NUM_TRIES 10
-#define DEPTH 5
-
 long long int ai_nodes_searched = 0;
 
 static inline int eval_board(board_t *board) {
@@ -65,14 +62,14 @@ void ai_find_best_move(board_t *board, int *best_move) {
 
     /* since this game is affected by rand(), doing a naive depth first search
      * will not necessarily give a good move, since we could have had really bad luck.
-     * so instead of doing it once, we do it `NUM_TRIES` times, and take the move that
+     * so instead of doing it once, we do it `AI_NUM_TRIES` times, and take the move that
      * was returned the most.
      *
      * since we search upwards first in `ai_search()`, this is usually the move that's
      * returned in open positions. */
-    for (int try = 0; try < NUM_TRIES; ++try) {
+    for (int try = 0; try < AI_NUM_TRIES; ++try) {
         int move = -1;
-        ai_search(board, DEPTH, 0, &move);
+        ai_search(board, AI_DEPTH, 0, &move);
 
         assert(move >= 0 && move < 4);
 
