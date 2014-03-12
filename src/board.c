@@ -44,14 +44,17 @@ static void fill_random_cell(board_t *board) {
         return;
     }
 
+    /* bitmap of all the unoccupied squares */
     int bitmap_flipped = ~board->occupied_cells & ((1 << SIZE) - 1);
     if (bitmap_flipped) {
         int num_unoccupied = PopCnt(bitmap_flipped);
 
+        /* remove a bit from the bottom of `bitmap_flipped`, `rand() % num_unoccupied` times. */
         for (int r = rand() % num_unoccupied; r; --r) {
             bitmap_flipped &= bitmap_flipped - 1;
         }
 
+        /* Get the index of the lowermost bit, which should now be a random index of the unoccupied squares. */
         int rand_i = LSB(bitmap_flipped);
         int rand_val = (rand() % 9) ? 2 : 4;
 
@@ -111,6 +114,7 @@ void board_move(board_t *board, int move) {
                 board->cells[i] = 0;
                 board->cells[other_i] = val * 2;
                 board->score += get_score(val);
+                /* remove the number from `bitmap` as it's been merged, and so it shouldn't move */
                 bitmap &= ~(1 << other_i);
             }
             else {

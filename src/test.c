@@ -18,7 +18,7 @@ void rotate_board(board_t *board) {
         }
     }
 
-    memcpy((void*) board->cells, (void*) rotated.cells, sizeof(board->cells));
+    memcpy(board->cells, rotated.cells, sizeof(board->cells));
 }
 
 void test_run_testcases() {

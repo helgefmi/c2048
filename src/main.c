@@ -11,7 +11,7 @@
 int main(int argc, char **argv) {
     int seed = time(NULL);
     //seed = 1394569404;
-    printf("Random seed: %d\n", seed);
+    //printf("Random seed: %d\n", seed);
     srand(seed);
 
     precalc_init();
@@ -54,8 +54,9 @@ int main(int argc, char **argv) {
         }
     }
     else {
+        printf("c2048, compiled with AI_DEPTH=%d AI_NUM_TRIES=%d\n\n", AI_DEPTH, AI_NUM_TRIES);
         puts("--human  Play on the console, using hjkl to move around");
-        puts("--test   Runs the testcases and does a performance test (nodes/sec)");
+        puts("--test   Runs some testcases");
         puts("--ai     Runs infinitly many games in a row, while tracking stats (avg, max, nps, etc.)");
         return 1;
     }

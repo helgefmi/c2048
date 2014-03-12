@@ -20,7 +20,7 @@ int ai_search(board_t *board, int depth, int ply, int *best_move) {
         return eval_board(board);
     }
 
-    /* in case there's no possible moves, we'll return `up`. let `ai_play` and `interface_main`
+    /* in case there's no possible moves, we'll return MOVE_UP. let `ai_play` and `interface_main`
      * worry about when the game has ended. */
     int best_ply_move = MOVE_UP;
     int best_ply_score = board->score;

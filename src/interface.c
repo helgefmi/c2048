@@ -48,6 +48,7 @@ static int get_socket(char *path) {
 
     struct sockaddr_un remote;
     memset(&remote, 0, sizeof(remote));
+
     remote.sun_family = AF_UNIX;
     strcpy(remote.sun_path, path);
 
