@@ -3,7 +3,9 @@ c2048
 
 c2048 is a [2048](http://saming.fr/p/2048/) game engine with AI, made in C.
 
-c2048 uses bitmaps extensively, and should have a very fast board implementation. The AI algorithm is a simple depth-first search using `score + number_or_free_cells` as a heuristic.
+c2048 uses bitmaps extensively, and should have a very fast board implementation. The AI is a simple depth-first search using `score + number_or_free_cells` as a heuristic.
+
+If you want to change the parameters for the search algorithm, change `AI_DEPTH` and `AI_NUM_TRIES` in `ai.h`.
 
 Shell arguments:
 ----------------
